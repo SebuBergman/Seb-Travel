@@ -1,13 +1,13 @@
 import { Controller, type SubmitHandler, useForm } from "react-hook-form";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 import { Box, Link, Stack, TextField, Typography } from "@mui/material";
 
 import AppButton from "@features/ui/AppButton";
-import { AppRoutes } from "@config/ruotes";
+import { AppRoutes } from "@config/routes";
 import { useAppDispatch, useAppSelector } from "@store/index";
 import { loginUser } from "../store/authActions";
-import { selectUser } from "../store/authSlice";
+import { selectAuth} from "../store/authSlice";
 
 interface FormInput {
   email: string;
@@ -15,10 +15,14 @@ interface FormInput {
 }
 
 export default function LoginForm() {
-  const user = useAppSelector(selectUser);
+  const auth = useAppSelector(selectAuth);
   const { handleSubmit, control, onSubmit } = useLoginForm();
+  const location = useLocation();
 
   if (user) {
+    // Send the user back to the page they tried to visit when they were
+    // redirected to the login page
+    const from = location.state?.from?.pathname || AppRoutes.dashboard;
     return <Navigate to={AppRoutes.dashboard} replace />;
   }
 
@@ -71,7 +75,7 @@ export default function LoginForm() {
           />
         )}
       />
-      <AppButton type="submit" fullWidth variant="contained" sx={{ mb: 2 }}>
+      <AppButton loading={auth.status === "loading"} type="submit" fullWidth variant="contained" sx={{ mb: 2 }}>
         Login
       </AppButton>
       <Stack

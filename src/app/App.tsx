@@ -1,4 +1,4 @@
-import AppRouter from "@config/ruotes/AppRouter";
+import AppRouter from "@config/routes/components/AppRouter";
 import { theme } from "@config/styles";
 import { BrowserRouter } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";

@@ -3,6 +3,7 @@ import { FirebaseError } from "firebase/app";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 
@@ -32,4 +33,8 @@ async function handleAuthError(authFunction: () => Promise<void>) {
     }
     throw Error("error here");
   }
+}
+
+export function logout() {
+  return signOut(auth);
 }

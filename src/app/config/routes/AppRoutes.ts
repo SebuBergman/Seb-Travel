@@ -3,8 +3,6 @@ export const AppRoutes = {
   login: "/login",
   signUp: "/signup",
   dashboard: "/account/dashboard",
-  /*about: "/about",
-  notFound: "/not-found",
-  bookings: "/bookings",
-  profile: "/profile",*/
+  trips: "/account/trips",
+  addTrip: "/account/addTrip",
 };
