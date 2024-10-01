@@ -1,10 +1,12 @@
-import { auth, mapAuthCodeToMessage } from "@services/firebase";
 import { FirebaseError } from "firebase/app";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
   updateProfile,
 } from "firebase/auth";
+
+import { auth, mapAuthCodeToMessage } from "@services/firebase";
 
 export function register(name: string, email: string, password: string) {
   return handleAuthError(async () => {
@@ -30,6 +32,10 @@ async function handleAuthError(authFunction: () => Promise<void>) {
     if (error instanceof FirebaseError) {
       throw Error(mapAuthCodeToMessage(error.code));
     }
-    throw Error("error here");
+    throw Error("Something went wrong! Please try again!");
   }
+}
+
+export function logout() {
+  return signOut(auth);
 }

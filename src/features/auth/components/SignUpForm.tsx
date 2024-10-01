@@ -4,10 +4,10 @@ import { Navigate } from "react-router-dom";
 import { Box, Link, Stack, TextField, Typography } from "@mui/material";
 
 import AppButton from "@features/ui/AppButton";
-import { AppRoutes } from "@config/ruotes";
+import { AppRoutes } from "@config/routes";
 import { useAppDispatch, useAppSelector } from "@store/index";
 import { registerUser } from "../store/authActions";
-import { setUserName, selectUser } from "../store/authSlice";
+import { setUserName, selectAuth } from "../store/authSlice";
 import { auth } from "@services/firebase";
 
 
@@ -19,10 +19,10 @@ interface FormInput {
 }
 
 export default function SignUpForm() {
-  const user = useAppSelector(selectUser);
+  const auth = useAppSelector(selectAuth);
   const { handleSubmit, control, password, onSubmit } = useSignUpForm();
 
-  if ( user ) {
+  if ( auth.user ) {
     return <Navigate to={AppRoutes.dashboard} replace />
   }
   return (
@@ -120,7 +120,7 @@ export default function SignUpForm() {
           />
         )}
       />
-      <AppButton type="submit" fullWidth variant="contained" sx={{ mb: 2 }}>
+      <AppButton loading={auth.status === "loading"} type="submit" fullWidth variant="contained" sx={{ mb: 2 }}>
         Sing up
       </AppButton>
       <Stack

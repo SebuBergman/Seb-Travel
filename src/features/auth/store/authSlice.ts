@@ -1,6 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
+
+import { RootState } from "@store/index";
+
 import { loginUser, registerUser } from "./authActions";
-import { RootState } from "@store/types";
 
 interface UserInfo {
   uid: string;
@@ -31,7 +33,7 @@ export const authSlice = createSlice({
     },
     logout: (state) => {
       state.user = null;
-      state.status = "idle";
+      state.status = "complete";
       state.error = null;
     },
     setUserName: (state, action: PayloadAction<string | null | undefined>) => {
@@ -70,6 +72,7 @@ export const authSlice = createSlice({
 
 export const { userLoaded, logout, setUserName } = authSlice.actions;
 
+export const selectAuth = (state: RootState) => state.auth;
 export const selectUser = (state: RootState) => state.auth.user;
 
 export default authSlice.reducer;
