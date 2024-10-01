@@ -6,6 +6,7 @@ import { Box, Link, Stack, TextField, Typography } from "@mui/material";
 import AppButton from "@features/ui/AppButton";
 import { AppRoutes } from "@config/routes";
 import { useAppDispatch, useAppSelector } from "@store/index";
+
 import { loginUser } from "../store/authActions";
 import { selectAuth} from "../store/authSlice";
 
@@ -19,11 +20,11 @@ export default function LoginForm() {
   const { handleSubmit, control, onSubmit } = useLoginForm();
   const location = useLocation();
 
-  if (user) {
+  if (auth.user) {
     // Send the user back to the page they tried to visit when they were
     // redirected to the login page
     const from = location.state?.from?.pathname || AppRoutes.dashboard;
-    return <Navigate to={AppRoutes.dashboard} replace />;
+    return <Navigate to={from} replace />;
   }
 
   return (
