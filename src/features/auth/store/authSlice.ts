@@ -1,6 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
+
+import { RootState } from "@store/index";
+
 import { loginUser, registerUser } from "./authActions";
-import { RootState } from "@store/types";
 
 interface UserInfo {
   uid: string;

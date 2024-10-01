@@ -18,7 +18,7 @@ export const registerUser = createAsyncThunk<
   {
     rejectValue: string;
   }
->("users/update", async (user, { rejectWithValue }) => {
+>("auth/register", async (user, { rejectWithValue }) => {
   try {
     await register(user.name, user.email, user.password);
   } catch (error) {
@@ -35,7 +35,7 @@ export const loginUser = createAsyncThunk<
   {
     rejectValue: string;
   }
->("users/update", async (user, { rejectWithValue }) => {
+>("auth/login", async (user, { rejectWithValue }) => {
   try {
     await login(user.email, user.password);
   } catch (error) {

@@ -1,4 +1,3 @@
-import { auth, mapAuthCodeToMessage } from "@services/firebase";
 import { FirebaseError } from "firebase/app";
 import {
   createUserWithEmailAndPassword,
@@ -6,6 +5,8 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+
+import { auth, mapAuthCodeToMessage } from "@services/firebase";
 
 export function register(name: string, email: string, password: string) {
   return handleAuthError(async () => {
