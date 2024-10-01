@@ -5,7 +5,6 @@ import { store } from "./app/store/";
 
 import App from "./app/App.tsx";
 
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
     <App />

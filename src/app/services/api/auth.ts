@@ -32,7 +32,7 @@ async function handleAuthError(authFunction: () => Promise<void>) {
     if (error instanceof FirebaseError) {
       throw Error(mapAuthCodeToMessage(error.code));
     }
-    throw Error("error here");
+    throw Error("Something went wrong! Please try again!");
   }
 }
 

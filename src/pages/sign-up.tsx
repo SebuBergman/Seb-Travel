@@ -2,7 +2,7 @@ import { APP_NAME } from "@config/constants";
 import SignUpForm from "@features/auth/components/SignUpForm";
 import { Typography } from "@mui/material";
 
-export default function SignUp() {
+export default function SignUpPage() {
   return (
     <>
       <Typography component="h1" variant="h2" mb={1}>
