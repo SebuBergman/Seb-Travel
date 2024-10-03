@@ -2,8 +2,9 @@ import { APP_NAME } from "@config/constants";
 import { Box, Typography } from "@mui/material";
 
 interface Props {
-  isMinimized: boolean;
+  isMinimized?: boolean;
 }
+
 function LogoIcon() {
   return (
     <svg
@@ -22,7 +23,7 @@ function LogoIcon() {
   );
 }
 
-export default function Logo({ isMinimized} : Props) {
+export default function Logo({ isMinimized } : Props) {
   return (
     <Box
       sx={{

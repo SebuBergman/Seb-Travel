@@ -62,8 +62,8 @@ const StyledDrawer = styled(Drawer, {
 const TOOLBAR_STYLES = { mt: 2, mb: 1 };
 
 export default function AccountLayout() {
-  const { md } = useBreakpoints();
-  const [isOpen, setOpen] = useState(true);
+  const { md, xl } = useBreakpoints();
+  const [isOpen, setOpen] = useState(xl);
 
   const closeDrawer = () => {
     setOpen(false);
@@ -107,11 +107,12 @@ export default function AccountLayout() {
           </AppIconButton>
         </>
       )}
+      {/* Mobile Drawer */}
       {!md && (
         <>
           <AppBar
             position="fixed"
-            sx={{ boxShadow: "none", background: "transparent" }}
+            sx={{ boxShadow: "none", backgroundColor: "grey.100" }}
           >
             <Toolbar sx={TOOLBAR_STYLES}>
               <IconButton
