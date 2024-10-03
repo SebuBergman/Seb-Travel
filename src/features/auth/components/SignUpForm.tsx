@@ -121,7 +121,7 @@ export default function SignUpForm() {
         )}
       />
       <AppButton loading={auth.status === "loading"} type="submit" fullWidth variant="contained" sx={{ mb: 2 }}>
-        Sing up
+        Sign up
       </AppButton>
       <Stack
         justifyContent="center"
