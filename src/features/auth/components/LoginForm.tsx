@@ -8,7 +8,7 @@ import { AppRoutes } from "@config/routes";
 import { useAppDispatch, useAppSelector } from "@store/index";
 
 import { loginUser } from "../store/authActions";
-import { selectAuth} from "../store/authSlice";
+import { selectAuth } from "../store/authSlice";
 
 interface FormInput {
   email: string;
@@ -50,7 +50,7 @@ export default function LoginForm() {
             autoFocus
             helperText={fieldState.error?.message}
             error={Boolean(fieldState.error)}
-            sx={{ mb: 3, mt: 0 }}
+            sx={{ mb: 3 }}
             {...field}
           />
         )}
@@ -71,12 +71,18 @@ export default function LoginForm() {
             autoComplete="current-password"
             helperText={fieldState.error?.message}
             error={Boolean(fieldState.error)}
-            sx={{ mb: { xs: 3, md: 5 }, mt: 0 }}
+            sx={{ mb: { xs: 3, md: 5 } }}
             {...field}
           />
         )}
       />
-      <AppButton loading={auth.status === "loading"} type="submit" fullWidth variant="contained" sx={{ mb: 2 }}>
+      <AppButton
+        loading={auth.status === "loading"}
+        type="submit"
+        fullWidth
+        variant="contained"
+        sx={{ mb: 2 }}
+      >
         Login
       </AppButton>
       <Stack
@@ -117,5 +123,5 @@ function useLoginForm() {
     handleSubmit,
     control,
     onSubmit,
-  }
+  };
 }
