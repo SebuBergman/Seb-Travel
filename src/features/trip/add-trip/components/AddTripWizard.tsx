@@ -34,7 +34,11 @@ function AddTripWizard() {
           Step {stepData.description}
         </Typography>
         <Box
-          sx={{ minHeight: { xs: "58vh", md: "40vh" }, maxHeight: { xs: "58vh", md: "40vh" }, overflowY: "scroll" }}
+          sx={{
+            minHeight: { xs: "58vh", md: "auto" },
+            maxHeight: { xs: "58vh", md: "40vh" },
+            overflowY: "scroll",
+          }}
         >
           <StepComponent />
         </Box>
