@@ -6,12 +6,12 @@ import { WIZARD_STEPS } from "../../data";
 import { useBreakpoints } from "@hooks/useBreakpoints";
 
 export default function Pagination() {
-  const { md } = useBreakpoints();
+  const { md, lg } = useBreakpoints();
   const currentStep = 0;
 
   return (
     <MobileStepper
-      variant={md ? "dots" : "text"}
+      variant={lg ? "dots" : "text"}
       steps={WIZARD_STEPS.length}
       position="static"
       activeStep={currentStep}
@@ -42,7 +42,7 @@ export default function Pagination() {
         bottom: 0,
         left: 0,
         width: "100%",
-        p: { xs: 2, md: 3 },
+        p: { xs: 2, lg: 3 },
         borderRadius: 4,
       }}
     />
