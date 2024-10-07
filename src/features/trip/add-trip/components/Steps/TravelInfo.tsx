@@ -157,6 +157,7 @@ function useTravelInfoForm() {
   const formValues = watch();
   const onSubmit: SubmitHandler<FormInput> = (data) => {
     // Todo: Save step info
+    console.log(data);
   };
 
   return {
