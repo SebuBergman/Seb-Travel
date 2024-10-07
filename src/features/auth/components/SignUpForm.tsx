@@ -10,7 +10,6 @@ import { registerUser } from "../store/authActions";
 import { setUserName, selectAuth } from "../store/authSlice";
 import { auth } from "@services/firebase";
 
-
 interface FormInput {
   name: string;
   email: string;
@@ -22,8 +21,8 @@ export default function SignUpForm() {
   const auth = useAppSelector(selectAuth);
   const { handleSubmit, control, password, onSubmit } = useSignUpForm();
 
-  if ( auth.user ) {
-    return <Navigate to={AppRoutes.dashboard} replace />
+  if (auth.user) {
+    return <Navigate to={AppRoutes.dashboard} replace />;
   }
   return (
     <Box
@@ -48,7 +47,7 @@ export default function SignUpForm() {
             autoFocus
             helperText={fieldState.error?.message}
             error={Boolean(fieldState.error)}
-            sx={{ mb: 3, mt: 0 }}
+            sx={{ mb: 3 }}
             {...field}
           />
         )}
@@ -69,7 +68,7 @@ export default function SignUpForm() {
             autoFocus
             helperText={fieldState.error?.message}
             error={Boolean(fieldState.error)}
-            sx={{ mb: 3, mt: 0 }}
+            sx={{ mb: 3 }}
             {...field}
           />
         )}
@@ -90,7 +89,7 @@ export default function SignUpForm() {
             autoComplete="current-password"
             helperText={fieldState.error?.message}
             error={Boolean(fieldState.error)}
-            sx={{ mb: 3, mt: 0 }}
+            sx={{ mb: 3 }}
             {...field}
           />
         )}
@@ -115,12 +114,18 @@ export default function SignUpForm() {
             autoComplete="current-password"
             helperText={fieldState.error?.message}
             error={Boolean(fieldState.error)}
-            sx={{ mb: { xs: 3, md: 5 }, mt: 0 }}
+            sx={{ mb: { xs: 3, md: 5 }}}
             {...field}
           />
         )}
       />
-      <AppButton loading={auth.status === "loading"} type="submit" fullWidth variant="contained" sx={{ mb: 2 }}>
+      <AppButton
+        loading={auth.status === "loading"}
+        type="submit"
+        fullWidth
+        variant="contained"
+        sx={{ mb: 2 }}
+      >
         Sign up
       </AppButton>
       <Stack
@@ -168,5 +173,5 @@ function useSignUpForm() {
     control,
     password,
     onSubmit,
-  }
+  };
 }
