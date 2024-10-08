@@ -33,7 +33,7 @@ export const tripWizardSlice = createSlice({
     nextStep: (state) => {
       state.currentStep += 1;
     },
-    previousStep: (state) => {
+    prevStep: (state) => {
       if (state.currentStep === 0) {
         throw new Error(
           "You are already on the first step. You can't go back."
@@ -63,7 +63,7 @@ export const tripWizardSlice = createSlice({
     });
   },
 });
-export const { nextStep, previousStep, setTravelInformation } =
+export const { nextStep, prevStep, setTravelInformation } =
   tripWizardSlice.actions;
 export const selectCurrentStep = (state: RootState) =>
   state.tripWizard.currentStep;
