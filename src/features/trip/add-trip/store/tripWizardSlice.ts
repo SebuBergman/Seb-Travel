@@ -17,7 +17,7 @@ const getInitialState = () => ({
     startDate: null,
     endDate: null,
     locationFrom: "",
-    destinations: [],
+    destinations: [{ id: uuidv4(), name: "" }],
     places: [],
     expenses: [],
     documents: [],
@@ -56,6 +56,12 @@ export const tripWizardSlice = createSlice({
       state.trip.endDate = action.payload.endDate;
       state.trip.previewImage = action.payload.previewImage;
     },
+    setLocationFrom: (state, action: PayloadAction<Trip["locationFrom"]>) => {
+      state.trip.locationFrom = action.payload;
+    },
+    setDestinations: (state, action: PayloadAction<Trip["destinations"]>) => {
+      state.trip.destinations = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(PURGE, () => {
@@ -63,8 +69,13 @@ export const tripWizardSlice = createSlice({
     });
   },
 });
-export const { nextStep, prevStep, setTravelInformation } =
-  tripWizardSlice.actions;
+export const {
+  nextStep,
+  prevStep,
+  setTravelInformation,
+  setLocationFrom,
+  setDestinations,
+} = tripWizardSlice.actions;
 export const selectCurrentStep = (state: RootState) =>
   state.tripWizard.currentStep;
 export const selectWizardTrip = (state: RootState) => state.tripWizard.trip;
