@@ -1,13 +1,21 @@
 import MobileStepper from "@mui/material/MobileStepper";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
 import AppButton from "@features/ui/AppButton";
-import { WIZARD_STEPS } from "../../data";
 import { useBreakpoints } from "@hooks/useBreakpoints";
 
+import { WIZARD_STEPS } from "../../data";
+import { useAppDispatch, useAppSelector } from "@store/index";
+import { prevStep, selectCurrentStep } from "../../store/tripWizardSlice";
+
+
 export default function Pagination() {
+  const dispatch = useAppDispatch();
   const { md, lg } = useBreakpoints();
-  const currentStep = 0;
+  const currentStep = useAppSelector(selectCurrentStep);
+
+  const onBackButtonClick = () => dispatch(prevStep());
 
   return (
     <MobileStepper
@@ -22,6 +30,7 @@ export default function Pagination() {
       }
       backButton={
         <AppButton
+          onClick={onBackButtonClick}
           fullWidth={!md}
           variant="outlined"
           startIcon={<ArrowBackIcon />}

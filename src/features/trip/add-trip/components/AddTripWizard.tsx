@@ -1,11 +1,14 @@
 import { Box, Typography } from "@mui/material";
 import { WIZARD_STEPS } from "../data";
 import DesktopStepper from "./Navigation/DesktopStepper";
+import { useAppSelector } from "@store/index";
+import { selectCurrentStep } from "../store/tripWizardSlice";
 
 function AddTripWizard() {
-  const currentStep = 0;
+  const currentStep = useAppSelector(selectCurrentStep);
   const stepData = WIZARD_STEPS[currentStep];
   const StepComponent = stepData.Component;
+  
   return (
     <Box>
       <DesktopStepper steps={WIZARD_STEPS} currentStep={currentStep} />
