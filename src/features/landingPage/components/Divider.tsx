@@ -1,9 +1,9 @@
 import { Box, Stack, Typography } from "@mui/material";
-import BackgroundVector1 from "./assets/Background.png";
-import Vector1 from "./assets/Vector9.png";
-import BackgroundVector2 from "./assets/Vector11.png";
-import Vector2 from "./assets/Vector12.png";
-import Vector3 from "./assets/Vector13.png";
+import BackgroundVector1 from "../assets/Background.png";
+import Vector1 from "../assets/Vector9.png";
+import BackgroundVector2 from "../assets/Vector11.png";
+import Vector2 from "../assets/Vector12.png";
+import Vector3 from "../assets/Vector13.png";
 import { Colors } from "@config/styles";
 import AppButton from "@features/ui/AppButton";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
