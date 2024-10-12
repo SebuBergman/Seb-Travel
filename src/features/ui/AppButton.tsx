@@ -6,7 +6,7 @@ interface Props {
   variant?: "text" | "contained" | "outlined";
   fullWidth?: boolean;
   loading?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   LinkComponent?: React.ElementType;
   href?: string;
   onClick?: () => void;

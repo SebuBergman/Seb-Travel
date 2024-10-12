@@ -5,7 +5,7 @@ import AuthLayout from "@features/ui/layout/AuthLayout";
 import AddTripPage from "@pages/account/add-trip";
 import DashboardPage from "@pages/account/dashboard";
 import TripsPage from "@pages/account/trips";
-import HomePage from "@pages/home";
+import HomePage from "@pages/landingPage/home";
 import LoginPage from "@pages/login";
 import NotFoundPage from "@pages/not-found";
 import SignUpPage from "@pages/sign-up";
