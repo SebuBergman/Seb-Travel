@@ -58,3 +58,25 @@ export const LANDING_PAGE_ELLIPSE_IMAGES: LandigPageEllipseImage[] = [
     alt: "Profile icon.",
   },
 ];
+
+import { AppRoutes } from "@config/routes/AppRoutes";
+
+interface LandingPageLinks {
+  text: string;
+  path: string;
+}
+
+export const LANDING_PAGE_LINKS: LandingPageLinks[] = [
+  {
+    text: "Plan your trip",
+    path: AppRoutes.addTrip,
+  },
+  {
+    text: "Log In",
+    path: AppRoutes.login,
+  },
+  {
+    text: "Sign up",
+    path: AppRoutes.signUp,
+  },
+];
