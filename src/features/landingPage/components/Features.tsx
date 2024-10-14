@@ -10,7 +10,6 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 import GalleryImage from "../assets/Gallery.png";
 import ExpensesImage from "../assets/Expenses.png";
-import { setMaxIdleHTTPParsers } from "http";
 import { FontWeights } from "@app/config/styles/FontWeights";
 
 export default function Features() {

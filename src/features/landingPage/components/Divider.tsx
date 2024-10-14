@@ -33,49 +33,20 @@ export default function Divider() {
         justifyContent={"center"}
         alignItems={"center"}
         textAlign={"center"}
+        position={"relative"}
       >
-        <Box
-          component="img"
-          src={BackgroundVector2}
-          sx={{
-            width: "660px",
-            height: "159px",
-            position: "relative",
-            top: "105px",
-            left: "640px",
-            display: { xs: "none", md: "flex" },
-          }}
-        />
-        <Box
-          component="img"
-          src={Vector2}
-          sx={{
-            width: "152.3px",
-            height: "92.79px",
-            position: "relative",
-            left: { xs: "200px", md: "650px" },
-            bottom: { xs: "-60px", md: "100px" },
-          }}
-        />
-        <Box
-          component="img"
-          src={Vector3}
-          sx={{
-            width: "152.3px",
-            height: "92.79px",
-            position: "relative",
-            left: { xs: "220px", md: "650px" },
-            bottom: { xs: "35px", md: "100px" },
-          }}
-        />
-        <Stack sx={{ mt: { xs: "-40px" } }}>
+        <Stack
+          sx={{ mt: { xs: "-40px" }, flex: 1 }}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
           <Typography
             variant="h2"
             sx={{
               mb: { xs: 2, md: 3 },
               color: Colors.primaryGreen,
-              fontSize: { xs: "30px" },
-              lineHeight: { xs: "45px" },
+              fontSize: { xs: "30px", md: "50px" },
+              lineHeight: { xs: "45px", md: "55px" },
               letterSpacing: { xs: "0.15px" },
             }}
           >
@@ -86,7 +57,12 @@ export default function Divider() {
             href={AppRoutes.addTrip}
             endIcon={<ArrowForwardIcon />}
             fullWidth
-            sx={{ px: { xs: 2 }, zIndex: 1, height: { xs: "56px" } }}
+            sx={{
+              px: { xs: 2 },
+              zIndex: 1,
+              height: "56px",
+              maxWidth: { md: "260px" },
+            }}
           >
             <Typography
               variant="body2"
@@ -102,12 +78,45 @@ export default function Divider() {
         </Stack>
         <Box
           component="img"
+          src={BackgroundVector2}
+          sx={{
+            width: "660px",
+            height: "159px",
+            position: "absolute",
+            top: "2px",
+            right: "-10px",
+            display: { xs: "none", md: "flex" },
+          }}
+        />
+        <Box
+          component="img"
+          src={Vector2}
+          sx={{
+            width: "152.3px",
+            position: "absolute",
+            top: { xs: "20px", md: "25px" },
+            right: { xs: "-60px", md: "600px" },
+          }}
+        />
+        <Box
+          component="img"
+          src={Vector3}
+          sx={{
+            width: "152.3px",
+            top: { xs: "10px", md: "15px" },
+            right: { xs: "-80px", md: "570px" },
+            position: "absolute",
+          }}
+        />
+        <Box
+          component="img"
           src={BackgroundVector1}
           sx={{
-            maxWidth: "761.15px",
-            position: "relative",
-            right: { xs: "160px", md: "650px" },
-            bottom: { xs: "50px", md: "100px" },
+            maxWidth: { xs: "603px", md: "761.15px" },
+            position: "absolute",
+            bottom: { xs: "35px", md: "60px" },
+            left: { xs: "-160px", md: "-120px" },
+            zIndex: 1,
           }}
         />
         <Box
@@ -115,10 +124,10 @@ export default function Divider() {
           src={Vector1}
           sx={{
             width: "152.3px",
-            height: "92.79px",
-            position: "relative",
-            left: "500px",
-            display: { xs: "none" },
+            position: "absolute",
+            bottom: "25px",
+            left: "440px",
+            display: { xs: "none", md: "flex" },
           }}
         />
       </Box>
