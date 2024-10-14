@@ -89,6 +89,7 @@ function usePlacesForm({ defaultPlaces }: Props) {
     control,
     name: "places",
   });
+  
   const onInputKeyDown = (
     event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
     index: number

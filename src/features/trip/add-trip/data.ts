@@ -3,6 +3,7 @@ import Places from "./components/Steps/Places";
 import Destination from "./components/Steps/Destinations";
 import TravelInfo from "./components/Steps/TravelInfo";
 import { WizardSteps } from "./types";
+import Expenses from "./components/Steps/Expenses";
 
 export const WIZARD_STEPS: WizardSteps[] = [
   {
@@ -26,7 +27,7 @@ export const WIZARD_STEPS: WizardSteps[] = [
     title: "Expenses",
     description:
       "Easily enter details about each expense and stay organized and informed about where your money is going.",
-    Component: TravelInfo,
+    Component: Expenses,
   },
   {
     title: "Documents",
