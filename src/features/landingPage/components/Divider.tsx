@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 
 import { AppRoutes } from "@config/routes";
 import { Box, Link, Stack, Typography } from "@mui/material";
-import { scrollEffect } from "@app/effects";
+import { scrollEffect } from "@features/landingPage/effects";
 
 import { Colors } from "@config/styles";
-import BackgroundVector1 from "../assets/Background.png";
+import BackgroundVector1 from "../assets/BackgroundVector1.png";
+import BackgroundVector2 from "../assets/BackgroundVector2.png";
 import Vector1 from "../assets/Vector9.png";
-import BackgroundVector2 from "../assets/Vector11.png";
 import Vector2 from "../assets/Vector12.png";
 import Vector3 from "../assets/Vector13.png";
 import AppButton from "@features/ui/AppButton";
@@ -26,7 +26,7 @@ export default function Divider() {
           display: "flex",
           flexDirection: "column",
           backgroundColor: Colors.secondaryGreen,
-          maxWidth: "1920px",
+          width: "100%",
           height: "384px",
           px: { xs: "16px" },
         }}
@@ -41,9 +41,9 @@ export default function Divider() {
             width: "660px",
             height: "159px",
             position: "relative",
-            left: "600px",
-            top: "20px",
-            display: { xs: "none" },
+            top: "105px",
+            left: "640px",
+            display: { xs: "none", md: "flex" },
           }}
         />
         <Box
@@ -72,7 +72,7 @@ export default function Divider() {
           <Typography
             variant="h2"
             sx={{
-              mb: { xs: 2, mb: 3 },
+              mb: { xs: 2, md: 3 },
               color: Colors.primaryGreen,
               fontSize: { xs: "30px" },
               lineHeight: { xs: "45px" },

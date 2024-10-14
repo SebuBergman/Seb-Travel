@@ -1,7 +1,7 @@
 import { AppRoutes } from "@config/routes";
 import { motion } from "framer-motion";
 
-import { scrollEffect } from "@app/effects";
+import { scrollEffect } from "@features/landingPage/effects";
 import { Box, Link, Stack, Typography } from "@mui/material";
 import AppButton from "@features/ui/AppButton";
 
@@ -10,9 +10,8 @@ import { LANDING_PAGE_ELLIPSE_IMAGES } from "../data";
 import Image1 from "../assets/image1.jpeg";
 import Image2 from "../assets/image2.jpeg";
 import Image3 from "../assets/image3.jpeg";
-import BackgroundVector1 from "../assets/Background.png";
+import BackgroundVector1 from "../assets/BackgroundVector1.png";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-
 
 export default function Hero() {
   return (
@@ -31,16 +30,16 @@ export default function Hero() {
           flexDirection: { xs: "column-reverse", md: "row" },
         }}
         mt={4}
-        mb={{ xs: "68.34px", md: "76px" }}
-        mx={{ md: "100px" }}
+        mb={{ xs: "68.34px", md: 9.5 }}
+        mx={{ md: 12.5 }}
       >
         <Stack
           sx={{
-            flexDirection: "column",
             maxHeight: { md: "636px" },
             maxWidth: { md: "668px" },
             px: { xs: 2 },
           }}
+          direction={"column"}
           gap={{ xs: 6, md: 20 }}
         >
           <Stack gap={5}>
@@ -61,16 +60,22 @@ export default function Hero() {
             />
             <Stack gap={2} textAlign={{ xs: "center", md: "left" }}>
               <Typography
+                variant="h1"
                 sx={{
                   fontSize: { xs: "32px", md: "60px" },
-                  lineHeight: { md: "70px" },
-                  fontWeight: "bold",
-                  letterSpacing: "0.15px",
+                  lineHeight: { xs: "48px", md: "70px" },
                 }}
               >
                 Your Ultimate Trip Companion
               </Typography>
-              <Typography color="text.secondary" variant="body1">
+              <Typography
+                color="text.secondary"
+                variant="body1"
+                sx={{
+                  fontSize: { xs: "18px", md: "20px" },
+                  lineHeight: "30px",
+                }}
+              >
                 Welcome to SebTravel - Your Passport to Seamless Adventures!
                 Discover, plan, and track your journeys effortlessly with our
                 intuitive web application. Start exploring now!
@@ -104,30 +109,34 @@ export default function Hero() {
           </Stack>
           <Stack
             sx={{
-              flexDirection: { xs: "column", md: "row" },
-              borderTop: "1px solid rgba(234, 234, 234, 1)",
-              borderBottom: "1px solid rgba(234, 234, 234, 1)",
+              border: "1px solid rgba(234, 234, 234, 1)",
+              borderWidth: "1px 0",
+              minWidth: { md: 668 },
             }}
+            direction={{ xs: "column", md: "row" }}
             alignItems={{ xs: "center" }}
             justifyContent={{ xs: "center", md: "left" }}
-            minWidth={{ md: 668 }}
             py={{ xs: 2, md: 3 }}
           >
             <Stack
-              sx={{
-                flexDirection: { xs: "column", md: "row" },
-              }}
+              direction={{ xs: "column", md: "row" }}
               alignItems={{ xs: "right", md: "right" }}
               justifyContent={{ xs: "center" }}
             >
               <Stack
-                sx={{
-                  flexDirection: "row",
-                }}
+                direction={"row"}
                 alignItems={{ xs: "center" }}
                 gap={{ xs: 10, md: 2 }}
               >
-                <Typography variant="h5" py={0.625} mr={{ xs: 4, md: 2 }}>
+                <Typography
+                  variant="h5"
+                  py={0.625}
+                  mr={{ xs: 4, md: 2 }}
+                  sx={{
+                    fontSize: { xs: "22px", md: "30px" },
+                    lineHeight: { xs: "33px", md: "45px" },
+                  }}
+                >
                   1200+ users
                 </Typography>
                 <Stack sx={{ flexDirection: "row" }} mr={2}>

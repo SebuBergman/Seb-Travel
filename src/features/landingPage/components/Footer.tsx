@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-import { scrollEffect } from "@app/effects";
+import { scrollEffect } from "@features/landingPage/effects";
 import { Colors } from "@config/styles";
 import { Box, Stack, Typography } from "@mui/material";
 
@@ -44,7 +44,7 @@ function Footer() {
             justifyContent={"center"}
             alignItems={"center"}
           >
-            <Typography variant="body1" sx={{ mb: { xs: 1, mb: 0.5 } }}>
+            <Typography variant="body1" sx={{ mb: { xs: 1, md: 0.5 } }}>
               Get in touch
             </Typography>
             <Typography variant="subtitle1" color="text.secondary">
@@ -56,7 +56,7 @@ function Footer() {
             justifyContent={"center"}
             alignItems={"center"}
           >
-            <Typography variant="body1" sx={{ mb: { xs: 1, mb: 1 } }}>
+            <Typography variant="body1" sx={{ mb: { xs: 1, md: 1 } }}>
               contact@sebtravel.com
             </Typography>
             <Stack sx={{ flexDirection: "row" }} gap={1}>
