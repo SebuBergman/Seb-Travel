@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 import { AppRoutes } from "@config/routes";
 import { Colors } from "@config/styles";
-import { scrollEffect } from "@app/effects";
+import { scrollEffect } from "@features/landingPage/effects";
 import AppButton from "@features/ui/AppButton";
 import { Box, Link, Stack, Typography } from "@mui/material";
 
@@ -10,6 +10,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 import GalleryImage from "../assets/Gallery.png";
 import ExpensesImage from "../assets/Expenses.png";
+import { FontWeights } from "@app/config/styles/FontWeights";
 
 export default function Features() {
   return (
@@ -24,11 +25,9 @@ export default function Features() {
           display: "flex",
           flexDirection: "column",
           maxWidth: { md: "1720px" },
-          mx: "auto",
-          mb: { xs: "32px", md: "161px" },
+          mx: { xs: 2, md: 12.5 },
+          mb: { xs: 4, md: "161px" },
         }}
-        justifyContent={"center"}
-        alignContent={"center"}
       >
         <motion.div
           variants={scrollEffect}
@@ -36,11 +35,7 @@ export default function Features() {
           whileInView="animate"
           viewport={{ once: true }}
         >
-          <Stack
-            justifyContent={"center"}
-            alignItems={"center"}
-            sx={{ mb: { xs: 4, md: 8 } }}
-          >
+          <Stack alignItems={"center"} sx={{ mb: { xs: 4, md: 8 } }}>
             <Typography
               sx={{ color: Colors.primaryGreen, pb: { xs: 1 } }}
               variant="body2"
@@ -48,36 +43,38 @@ export default function Features() {
               FEATURES
             </Typography>
             <Typography
+            variant="h4"
               sx={{
                 fontSize: { xs: "26px", md: "40px" },
-                fontWeight: "bold",
                 letterSpacing: "0.15px",
               }}
+              fontWeight={FontWeights.semibold}
             >
               SebTravel best solution for travel
             </Typography>
           </Stack>
           <Stack
             sx={{
-              display: "flex",
-              flexDirection: { xs: "column", md: "row" },
               pr: { xs: 2, md: 0 },
               pl: { xs: 2, md: 0 },
             }}
+            direction={{ xs: "column", md: "row" }}
             justifyContent={"space-between"}
             alignItems={"center"}
-            gap={{ xs: "24px", md: "260px" }}
+            gap={{ xs: 3 }}
           >
             <Stack>
-              <img
+              <Box
+                component="img"
                 src={GalleryImage}
                 alt={"Big city view."}
                 loading="lazy"
-                style={{
+                sx={{
                   width: "100%",
                   height: "100%",
                   maxWidth: "810px",
                   maxHeight: "630px",
+                  padding: { md: "10px" },
                   borderRadius: "40px",
                 }}
               />
@@ -86,21 +83,38 @@ export default function Features() {
               sx={{
                 maxWidth: "650px",
               }}
-              justifyContent={"center"}
             >
               <Typography
-                sx={{ color: Colors.primaryGreen, mb: { xs: 2, mb: 1 } }}
                 variant="body2"
+                color={Colors.primaryGreen}
+                mb={{ xs: 2, md: 1 }}
               >
                 DASHBOARD
               </Typography>
-              <Typography variant="h4" sx={{ mb: { xs: 2, mb: 3 } }}>
+              <Typography
+                variant="h4"
+                mb={{ xs: 2, md: 3 }}
+                sx={{
+                  fontSize: {
+                    xs: "24px",
+                    md: "35px",
+                    lineHeight: { xs: "36px", md: "50px" },
+                  },
+                }}
+              >
                 Organize All Your Trips in a Single Application
               </Typography>
               <Typography
                 variant="body1"
                 color="text.secondary"
-                sx={{ mb: { xs: 2, mb: 3 } }}
+                mb={{ xs: 2, md: 3 }}
+                sx={{
+                  fontSize: {
+                    xs: "18px",
+                    md: "20px",
+                    lineHeight: { xs: "27px", md: "30px" },
+                  },
+                }}
               >
                 With our intuitive application, you can effortlessly organize
                 all your trips in one convenient location. From itinerary
@@ -122,21 +136,20 @@ export default function Features() {
         </motion.div>
         <Stack
           sx={{
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
             pr: { xs: 2, md: 0 },
             pl: { xs: 2, md: 0 },
-            margin: { xs: "32px 0px 32px 0px", md: "72px 0px 72px 0px" },
           }}
+          direction={{ xs: "column", md: "row" }}
+          m={{ xs: "32px 0px", md: "72px 0px" }}
         >
           <hr
             style={{
-              height: 1,
               width: "100%",
-              border: "1px solid rgba(234, 234, 234, 1)",
+              border: "1px solid #EAEAEA",
             }}
           ></hr>
         </Stack>
+
         <motion.div
           variants={scrollEffect}
           initial="initial"
@@ -145,29 +158,39 @@ export default function Features() {
         >
           <Stack
             sx={{
-              display: "flex",
-              flexDirection: { xs: "column-reverse", md: "row" },
               pr: { xs: 2, md: 0 },
               pl: { xs: 2, md: 0 },
             }}
+            direction={{ xs: "column-reverse", md: "row" }}
             justifyContent={"space-between"}
             alignItems={"center"}
-            gap={{ xs: "24px", md: "260px" }}
+            gap={{ xs: 3 }}
           >
-            <Stack sx={{ maxWidth: "650px", mb: { xs: 4, mb: 0 } }}>
+            <Stack sx={{ maxWidth: "650px", mb: { xs: 4, md: 0 } }}>
               <Typography
-                sx={{ color: Colors.primaryGreen, mb: { xs: 2, mb: 1 } }}
                 variant="body2"
+                color={Colors.primaryGreen}
+                mb={{ xs: 2, md: 1 }}
               >
                 EXPENSES
               </Typography>
-              <Typography variant="h4" sx={{ mb: { xs: 2, mb: 3 } }}>
+              <Typography
+                variant="h4"
+                mb={{ xs: 2, md: 3 }}
+                sx={{
+                  fontSize: {
+                    xs: "24px",
+                    md: "35px",
+                    lineHeight: { xs: "36px", md: "50px" },
+                  },
+                }}
+              >
                 Expense Tracking for Your Travels
               </Typography>
               <Typography
                 variant="body1"
                 color="text.secondary"
-                sx={{ mb: { xs: 2, mb: 3 } }}
+                mb={{ xs: 2, md: 3 }}
               >
                 Keep a Close Watch on Your Travel Costs with our User-Friendly
                 Expense Tracking Solution. Set budget goals, receive real-time
@@ -185,7 +208,7 @@ export default function Features() {
                 Plan your trip
               </AppButton>
             </Stack>
-            <Stack sx={{ flexGrow: "50%" }}>
+            <Stack>
               <Box
                 component="img"
                 src={ExpensesImage}
@@ -196,7 +219,7 @@ export default function Features() {
                   height: "100%",
                   maxWidth: "810px",
                   maxHeight: "630px",
-                  padding: { md: "10px 10px 10px 10px" },
+                  padding: { md: "10px" },
                   borderRadius: "40px",
                 }}
               />

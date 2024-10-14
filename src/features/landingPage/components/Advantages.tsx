@@ -4,7 +4,7 @@ import { Stack, Typography } from "@mui/material";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
 import FolderCopyOutlinedIcon from "@mui/icons-material/FolderCopyOutlined";
-import { scrollEffect } from "@app/effects";
+import { scrollEffect } from "@features/landingPage/effects";
 import { motion } from "framer-motion";
 
 function Advantages() {
@@ -17,10 +17,11 @@ function Advantages() {
     >
       <Stack
         sx={{
-          width: { md: "1720px" },
-          mx: { md: "auto" },
-          mb: { xs: "33px", md: "144px" },
+          maxWidth: { md: "1720px" },
+          mx: { xs: 0, md: 12.5 },
+          mb: { xs: "33px", md: 18 },
         }}
+        alignItems={"center"}
       >
         <Stack
           alignItems={"center"}
@@ -33,6 +34,7 @@ function Advantages() {
             ADVANTAGES
           </Typography>
           <Typography
+            variant="h2"
             sx={{
               fontSize: { xs: "26px", md: "40px" },
               fontWeight: "600",
@@ -44,18 +46,14 @@ function Advantages() {
         </Stack>
         <Stack
           sx={{
-            flexDirection: { xs: "column", md: "row" },
             maxWidth: { md: "1506px" },
-            mx: { md: "auto" },
           }}
-          justifyContent={"space-between"}
-          alignContent={"center"}
-          gap={{ xs: "24px", md: "84px" }}
+          direction={{ xs: "column", md: "row" }}
+          gap={{ xs: 3, md: 10.5 }}
         >
           <Stack
             sx={{
               maxWidth: { md: "446px" },
-              display: "flex",
             }}
             alignItems={"center"}
             textAlign={"center"}
@@ -67,22 +65,34 @@ function Advantages() {
               style={{
                 justifyContent: "center",
                 alignItems: "center",
-                height: "64px",
-                width: "64px",
                 backgroundColor: "#046AAA",
                 color: "white",
                 borderRadius: "8px",
               }}
             >
               <CameraAltOutlinedIcon
-                sx={{ width: "24px", height: "24px", border: "2px" }}
+                sx={{ width: "32px", height: "32px", margin: "16px" }}
               />
             </Stack>
             <Stack>
-              <Typography variant="h4" sx={{ mb: { xs: 2, mb: 3 } }}>
+              <Typography
+                variant="h4"
+                sx={{
+                  fontSize: { xs: "24px", md: "25px" },
+                  lineHeight: { xs: "36px", md: "30px" },
+                }}
+                mb={{ xs: 2, md: 2 }}
+              >
                 Keep memories from the trip
               </Typography>
-              <Typography variant="body1" color="text.secondary">
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                sx={{
+                  fontSize: { xs: "18px", md: "20px" },
+                  lineHeight: { xs: "27px", md: "30px" },
+                }}
+              >
                 Keeping your travel photos within your trip-planning app is
                 incredibly practical.
               </Typography>
@@ -91,7 +101,6 @@ function Advantages() {
           <Stack
             sx={{
               maxWidth: { md: "446px" },
-              display: "flex",
             }}
             alignItems={"center"}
             textAlign={"center"}
@@ -103,22 +112,34 @@ function Advantages() {
               style={{
                 justifyContent: "center",
                 alignItems: "center",
-                height: "64px",
-                width: "64px",
                 backgroundColor: "#046AAA",
                 color: "white",
                 borderRadius: "8px",
               }}
             >
               <FmdGoodOutlinedIcon
-                sx={{ width: "24px", height: "24px", border: "2px" }}
+                sx={{ width: "32px", height: "32px", margin: "16px" }}
               />
             </Stack>
             <Stack>
-              <Typography variant="h4" sx={{ mb: { xs: 2, mb: 3 } }}>
+              <Typography
+                variant="h4"
+                sx={{
+                  fontSize: { xs: "24px", md: "25px" },
+                  lineHeight: { xs: "36px", md: "30px" },
+                }}
+                mb={{ xs: 2, md: 2 }}
+              >
                 Add places you want to visit
               </Typography>
-              <Typography variant="body1" color="text.secondary">
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                sx={{
+                  fontSize: { xs: "18px", md: "20px" },
+                  lineHeight: { xs: "27px", md: "30px" },
+                }}
+              >
                 Our user-friendly tools help you plan and organize your packing
                 with ease.
               </Typography>
@@ -127,7 +148,6 @@ function Advantages() {
           <Stack
             sx={{
               maxWidth: { md: "446px" },
-              display: "flex",
             }}
             alignItems={"center"}
             textAlign={"center"}
@@ -139,27 +159,34 @@ function Advantages() {
               style={{
                 justifyContent: "center",
                 alignItems: "center",
-                height: "64px",
-                width: "64px",
                 backgroundColor: "#046AAA",
                 color: "white",
                 borderRadius: "8px",
               }}
             >
               <FolderCopyOutlinedIcon
-                sx={{ width: "24px", height: "24px", border: "2px" }}
+                sx={{ width: "32px", height: "32px", margin: "16px" }}
               />
             </Stack>
             <Stack>
               <Typography
                 variant="h4"
                 sx={{
-                  mb: { xs: 2, mb: 3 },
+                  fontSize: { xs: "24px", md: "25px" },
+                  lineHeight: { xs: "36px", md: "30px" },
                 }}
+                mb={{ xs: 2, md: 2 }}
               >
                 Centralize all your documents
               </Typography>
-              <Typography variant="body1" color="text.secondary">
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                sx={{
+                  fontSize: { xs: "18px", md: "20px" },
+                  lineHeight: { xs: "27px", md: "30px" },
+                }}
+              >
                 Simplify Your Life by Bringing Together All Your Essential
                 Documents and Files in a Single, Easily Accessible Location.
               </Typography>
