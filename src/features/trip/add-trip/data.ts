@@ -5,6 +5,7 @@ import TravelInfo from "./components/Steps/TravelInfo";
 import { WizardSteps } from "./types";
 import Expenses from "./components/Steps/Expenses";
 import Documents from "./components/Steps/Documents";
+import Photos from "./components/Steps/Photos";
 
 export const WIZARD_STEPS: WizardSteps[] = [
   {
@@ -39,11 +40,11 @@ export const WIZARD_STEPS: WizardSteps[] = [
     title: "Packing list",
     description:
       "Plan what you will need to grab with you to a trip. Add up to 4 checklists.",
-    Component: TravelInfo,
+    Component: Documents,
   },
   {
     title: "Photos",
     description: "Add your memories here!",
-    Component: TravelInfo,
+    Component: Photos,
   },
 ];
