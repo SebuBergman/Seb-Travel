@@ -14,6 +14,7 @@ interface Props {
   url?: string | null;
   onRemoveClick: () => void;
   uploadProgress: number | undefined;
+  isRemoving: boolean;
 }
 
 export default function DocumentCard({
@@ -21,6 +22,7 @@ export default function DocumentCard({
   url,
   onRemoveClick,
   uploadProgress,
+  isRemoving,
 }: Props) {
   return (
     <Box
@@ -29,7 +31,8 @@ export default function DocumentCard({
         border: 1,
         borderRadius: 4,
         borderColor: "grey.200",
-        width: 200,
+        width: { xs: 170, md: 200 },
+        height: "100%",
       }}
     >
       {uploadProgress != undefined && (
@@ -53,12 +56,12 @@ export default function DocumentCard({
           opacity: uploadProgress ? 0.2 : 1,
         }}
       >
-        <CloseIcon />
+        {isRemoving ? <CircularProgress size={24} /> : <CloseIcon />}
       </IconButton>
       <Stack
-        href={url ?? "#"}
+        href={isRemoving ? url ?? "#" : "#"}
         component={Link}
-        target="_blank"
+        target={isRemoving ? "_self" : "_blank"}
         rel="noopener noreferrer"
         gap={2}
         sx={{
