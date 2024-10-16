@@ -4,6 +4,7 @@ import Destination from "./components/Steps/Destinations";
 import TravelInfo from "./components/Steps/TravelInfo";
 import { WizardSteps } from "./types";
 import Expenses from "./components/Steps/Expenses";
+import Documents from "./components/Steps/Documents";
 
 export const WIZARD_STEPS: WizardSteps[] = [
   {
@@ -32,7 +33,7 @@ export const WIZARD_STEPS: WizardSteps[] = [
   {
     title: "Documents",
     description: "Upload documents that you need for your trip.",
-    Component: TravelInfo,
+    Component: Documents,
   },
   {
     title: "Packing list",

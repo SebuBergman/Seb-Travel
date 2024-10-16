@@ -2,8 +2,9 @@ import { useState } from "react";
 import { ButtonBase, Grid } from "@mui/material";
 import AppDialog from "@features/ui/AppDialog";
 import { TRIP_PREVIEW_IMAGES } from "../data";
-import UploadFileButton from "./UploadFileButton";
+import UploadFileButton from "./Files/UploadFileButton";
 import type { Trip } from "../types";
+import { useBreakpoints } from "@app/hooks/useBreakpoints";
 
 interface Props {
   isOpen: boolean;
@@ -11,6 +12,7 @@ interface Props {
   onSave: (previewImage: Trip["previewImage"]) => void;
 }
 export default function PreviewImageDialog({ isOpen, onClose, onSave }: Props) {
+  const { md } = useBreakpoints();
   const [selectedPreviewImage, setSelectedPreviewImage] =
     useState<Trip["previewImage"]>(null);
 
@@ -55,6 +57,7 @@ export default function PreviewImageDialog({ isOpen, onClose, onSave }: Props) {
             mainText="Upload preview photo"
             subText="PNG or PDF (max. 3MB)"
             sx={{ border: 4, borderColor: "white" }}
+            showSubText={md}
           />
         </Grid>
       </Grid>
