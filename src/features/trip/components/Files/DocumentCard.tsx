@@ -48,6 +48,7 @@ export default function DocumentCard({
       )}
       <IconButton
         onClick={onRemoveClick}
+        aria-label="remove document"
         sx={{
           position: "absolute",
           top: 8,

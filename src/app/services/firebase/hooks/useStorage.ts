@@ -10,6 +10,7 @@ import useToast from "@app/hooks/useToast";
 
 interface Props {
   onAllUploadSuccess: (uploadedFiles: TripFile[]) => void;
+  onOneUploadSuccess: (index: number, uploadedFile: TripFile) => void;
 }
 
 interface State {
@@ -31,7 +32,7 @@ const defaultState: State = {
   removingFilePath: null,
 };
 
-export function useStorage({ onAllUploadSuccess }: Props) {
+export function useStorage({ onAllUploadSuccess, onOneUploadSuccess }: Props) {
   const user = useAppSelector(selectUser);
   const { showErrorMessage } = useToast();
   const [state, setState] = useState<State>(defaultState);
@@ -131,6 +132,7 @@ export function useStorage({ onAllUploadSuccess }: Props) {
               fileName: file.fileName,
               storagePath: uploadTask.snapshot.ref.fullPath,
             };
+            onOneUploadSuccess(index, newUploadedFiles[index]);
 
             return {
               ...prevState,
