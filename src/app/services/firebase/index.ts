@@ -1,4 +1,5 @@
 export { auth } from "./firebase";
+export { firestore } from "./firebase";
 export { mapAuthCodeToMessage } from "./helpers/mapAuthCodeToMessage";
 export { getDownloadURL } from "./helpers/getDownloadURL";
 export { useAuthStateSubscription } from "./hooks/useAuthStateSubscription";

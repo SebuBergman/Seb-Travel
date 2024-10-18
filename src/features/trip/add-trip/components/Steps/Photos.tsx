@@ -7,6 +7,7 @@ import {
   setPhotos,
 } from "../../store/tripWizardSlice";
 import Pagination from "../Navigation/Pagination";
+import { addTrip } from "@app/services/api/trip";
 
 export default function Photos() {
   const { photos, onSubmit, onChange } = usePhotosForm();
@@ -26,9 +27,9 @@ function usePhotosForm() {
   const dispatch = useAppDispatch();
   const trip = useAppSelector(selectWizardTrip);
 
-  const onSubmit = (data: TripFile[]) => {
+  const onSubmit = async (data: TripFile[]) => {
     dispatch(setPhotos(data));
-    // Todo: save wizard data
+    await addTrip({...trip, photos: data})
   };
 
   const onChange = (data: TripFile[]) => {
