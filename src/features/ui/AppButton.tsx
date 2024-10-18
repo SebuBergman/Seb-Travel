@@ -13,6 +13,7 @@ interface Props {
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   sx?: SxProps<Theme>;
+  disabled?: boolean;
 }
 
 export default function AppButton({
@@ -27,6 +28,7 @@ export default function AppButton({
   endIcon,
   sx,
   onClick,
+  disabled,
 }: Props) {
   return (
     <LoadingButton
@@ -39,6 +41,7 @@ export default function AppButton({
       startIcon={startIcon}
       endIcon={endIcon}
       onClick={onClick}
+      disabled={disabled}
       sx={{
         borderRadius: 2,
         height: {

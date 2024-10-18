@@ -1,10 +1,12 @@
 import { MAX_TRIP_DESTINATIONS } from "../constants";
-import Places from "./components/Steps/Places";
-import Destination from "./components/Steps/Destinations";
-import TravelInfo from "./components/Steps/TravelInfo";
 import { WizardSteps } from "./types";
+
+import TravelInfo from "./components/Steps/TravelInfo";
+import Destination from "./components/Steps/Destinations";
+import Places from "./components/Steps/Places";
 import Expenses from "./components/Steps/Expenses";
 import Documents from "./components/Steps/Documents";
+import PackingLists from "./components/Steps/PackingLists";
 import Photos from "./components/Steps/Photos";
 
 export const WIZARD_STEPS: WizardSteps[] = [
@@ -40,7 +42,7 @@ export const WIZARD_STEPS: WizardSteps[] = [
     title: "Packing list",
     description:
       "Plan what you will need to grab with you to a trip. Add up to 4 checklists.",
-    Component: Documents,
+    Component: PackingLists,
   },
   {
     title: "Photos",
