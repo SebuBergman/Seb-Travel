@@ -43,7 +43,7 @@ export default function Features() {
               FEATURES
             </Typography>
             <Typography
-            variant="h4"
+              variant="h4"
               sx={{
                 fontSize: { xs: "26px", md: "40px" },
                 letterSpacing: "0.15px",

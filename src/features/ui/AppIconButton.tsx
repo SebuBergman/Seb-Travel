@@ -23,8 +23,8 @@ export default function AppIconButton(props: Props) {
       sx={{
         borderRadius: 2,
         minWidth: "auto",
-        width: props.isSmall ? 34 : {xs: 48, md: 58 },
-        height: props.isSmall ? 34 : {xs: 48, md: 58 },
+        width: props.isSmall ? 34 : { xs: 48, md: 58 },
+        height: props.isSmall ? 34 : { xs: 48, md: 58 },
         ...props.sx,
       }}
     >

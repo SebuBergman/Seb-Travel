@@ -9,7 +9,6 @@ import { WIZARD_STEPS } from "../../data";
 import { useAppDispatch, useAppSelector } from "@store/index";
 import { prevStep, selectCurrentStep } from "../../store/tripWizardSlice";
 
-
 export default function Pagination() {
   const dispatch = useAppDispatch();
   const { md, lg } = useBreakpoints();

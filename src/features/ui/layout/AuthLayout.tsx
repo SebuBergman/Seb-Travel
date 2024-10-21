@@ -5,6 +5,7 @@ import LoginBackground from "@features/auth/assets/login-background.png";
 import SignUpBackground from "@features/auth/assets/sign-up-background.png";
 
 import Logo from "../logo/Logo";
+import ErrorBoundary from "@app/config/routes/components/ErrorBoundary";
 
 export default function AuthLayout() {
   const location = useLocation();
@@ -62,7 +63,9 @@ export default function AuthLayout() {
           <Box mb={4}>
             <Logo />
           </Box>
-          <Outlet />
+          <ErrorBoundary>
+            <Outlet />
+          </ErrorBoundary>
         </Box>
       </Grid>
     </Grid>

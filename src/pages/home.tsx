@@ -7,7 +7,6 @@ import Advantages from "@features/landingPage/components/Advantages";
 import Divider from "@features/landingPage/components/Divider";
 import Footer from "@features/landingPage/components/Footer";
 
-
 export default function home() {
   return (
     <Box

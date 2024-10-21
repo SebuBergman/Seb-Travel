@@ -8,7 +8,7 @@ function AddTripWizard() {
   const currentStep = useAppSelector(selectCurrentStep);
   const stepData = WIZARD_STEPS[currentStep];
   const StepComponent = stepData.Component;
-  
+
   return (
     <Box>
       <DesktopStepper steps={WIZARD_STEPS} currentStep={currentStep} />

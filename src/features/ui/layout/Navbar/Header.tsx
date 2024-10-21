@@ -1,8 +1,4 @@
-import {
-  Link,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Link, Stack, Typography } from "@mui/material";
 
 import { AppRoutes } from "@config/routes";
 import Logo from "@features/ui/logo/Logo";

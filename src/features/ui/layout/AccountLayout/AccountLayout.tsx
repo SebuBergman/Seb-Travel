@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -20,6 +20,7 @@ import AppIconButton from "@features/ui/AppIconButton";
 import { useBreakpoints } from "@hooks/useBreakpoints";
 
 import AccountSidebar from "./AccountSidebar";
+import ErrorBoundary from "@app/config/routes/components/ErrorBoundary";
 
 const DESKTOP_DRAWER_WIDTH = 288;
 const DESKTOP_MINIMIZED_DRAWER_WIDTH = 94;
@@ -72,6 +73,11 @@ export default function AccountLayout() {
   const handleDrawerToggle = () => {
     setOpen(!isOpen);
   };
+
+  // This call is needed to cause re-render when you change
+  // the url, so error boundary from another page also re-renders
+  // and doesn't show old error from previous page
+  useLocation();
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -163,7 +169,9 @@ export default function AccountLayout() {
         }}
       >
         <Toolbar sx={{ display: { md: "none" }, ...TOOLBAR_STYLES }} />
-        <Outlet />
+        <ErrorBoundary>
+          <Outlet />
+        </ErrorBoundary>
       </Box>
     </Box>
   );
