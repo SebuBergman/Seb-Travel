@@ -11,22 +11,25 @@ import { useAuthStateSubscription } from "@services/firebase";
 import { persistor } from "@store/index";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import ErrorBoundary from "./config/routes/components/ErrorBoundary";
 
 export default function App() {
   useAuthStateSubscription();
 
   return (
-    <PersistGate loading={<Loader />} persistor={persistor}>
-      <BrowserRouter>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <SnackbarProvider>
-              <AppRouter />
-            </SnackbarProvider>
-          </ThemeProvider>
-        </LocalizationProvider>
-      </BrowserRouter>
-    </PersistGate>
+    <ErrorBoundary>
+      <PersistGate loading={<Loader />} persistor={persistor}>
+        <BrowserRouter>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <SnackbarProvider>
+                <AppRouter />
+              </SnackbarProvider>
+            </ThemeProvider>
+          </LocalizationProvider>
+        </BrowserRouter>
+      </PersistGate>
+    </ErrorBoundary>
   );
 }
