@@ -22,7 +22,7 @@ export function useAuthStateSubscription() {
       }
     });
 
-    return () => authStateListenerUnsubscribe()
+    return () => authStateListenerUnsubscribe();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 }

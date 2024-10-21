@@ -114,7 +114,7 @@ export default function SignUpForm() {
             autoComplete="current-password"
             helperText={fieldState.error?.message}
             error={Boolean(fieldState.error)}
-            sx={{ mb: { xs: 3, md: 5 }}}
+            sx={{ mb: { xs: 3, md: 5 } }}
             {...field}
           />
         )}

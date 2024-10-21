@@ -2,10 +2,7 @@ import { useAppDispatch, useAppSelector } from "@store/index";
 
 import FilesForm from "../../../components/Files/FilesForm";
 import type { TripFile } from "../../../types";
-import {
-  selectWizardTrip,
-  setPhotos,
-} from "../../store/tripWizardSlice";
+import { selectWizardTrip, setPhotos } from "../../store/tripWizardSlice";
 import Pagination from "../Navigation/Pagination";
 import { addTrip } from "@app/services/api/trip";
 
@@ -29,7 +26,7 @@ function usePhotosForm() {
 
   const onSubmit = async (data: TripFile[]) => {
     dispatch(setPhotos(data));
-    await addTrip({...trip, photos: data})
+    await addTrip({ ...trip, photos: data });
   };
 
   const onChange = (data: TripFile[]) => {
