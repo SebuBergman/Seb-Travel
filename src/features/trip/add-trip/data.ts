@@ -1,7 +1,7 @@
 import { MAX_TRIP_DESTINATIONS } from "../constants";
 import { WizardSteps } from "./types";
 
-import TravelInfo from "./components/Steps/TravelInfo";
+import TravelInfo from "./components/Steps/TripInfo";
 import Destination from "./components/Steps/Destinations";
 import Places from "./components/Steps/Places";
 import Expenses from "./components/Steps/Expenses";
