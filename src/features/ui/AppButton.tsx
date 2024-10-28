@@ -14,6 +14,15 @@ interface Props {
   endIcon?: React.ReactNode;
   sx?: SxProps<Theme>;
   disabled?: boolean;
+  isSmall?: boolean;
+  color?:
+    | "inherit"
+    | "primary"
+    | "secondary"
+    | "success"
+    | "error"
+    | "info"
+    | "warning";
 }
 
 export default function AppButton({
@@ -27,8 +36,10 @@ export default function AppButton({
   startIcon,
   endIcon,
   sx,
+  isSmall,
   onClick,
   disabled,
+  color,
 }: Props) {
   return (
     <LoadingButton
@@ -42,11 +53,12 @@ export default function AppButton({
       endIcon={endIcon}
       onClick={onClick}
       disabled={disabled}
+      color={color}
       sx={{
         borderRadius: 2,
         height: {
-          xs: variant === "text" ? 42 : 48,
-          md: variant === "text" ? 48 : 56,
+          xs: variant === "text" || isSmall ? 42 : 48,
+          md: variant === "text" || isSmall ? 48 : 56,
         },
         textTransform: "none",
         width: fullWidth ? "100%" : "fit-content",

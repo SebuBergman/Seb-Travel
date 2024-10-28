@@ -32,6 +32,6 @@
       "@hooks/*": ["src/app/hooks/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "src/features/trip/hooks/.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

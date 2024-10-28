@@ -17,6 +17,9 @@ const theme = createTheme({
       [100]: "#F9F9F9",
       [200]: "#EAEAEA",
     },
+    error: {
+      main: "#EB5757",
+    },
   },
   components: {
     MuiInputBase: {
@@ -92,6 +95,30 @@ const theme = createTheme({
           "Mui-completed": {
             fontWeight: FontWeights.regular,
           },
+        },
+      },
+    },
+    MuiBreadcrumbs: {
+      defaultProps: {
+        style: {
+          fontSize: "1rem",
+          lineHeight: "1.5rem",
+        },
+      },
+    },
+    MuiTabs: {
+      styleOverrides: {
+        root: {
+          "& button": {
+            minHeight: 65,
+          },
+        },
+      },
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          color: Colors.disabled,
         },
       },
     },
