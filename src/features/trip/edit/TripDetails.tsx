@@ -30,7 +30,7 @@ export default function TripDetails() {
   const onTripUpdate = (data: Partial<Trip>) => {
     updateTrip({ id: trip!.id, data });
   };
-
+  
   if (isLoading) {
     return (
       <Stack justifyContent="center" alignItems="center">
