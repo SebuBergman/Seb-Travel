@@ -83,7 +83,7 @@ export default function AccountLayout() {
   }, [location.pathname]);
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", bgcolor: "grey.100", minHeight: "100vh" }}>
       {/* Desktop Drawer */}
       {md && (
         <>
