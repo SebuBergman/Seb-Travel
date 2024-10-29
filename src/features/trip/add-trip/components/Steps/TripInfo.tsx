@@ -21,6 +21,7 @@ import {
   nextStep,
   selectWizardTrip,
   setTravelInformation,
+  setPreviewImage,
 } from "../../store/tripWizardSlice";
 import Pagination from "../Navigation/Pagination";
 import { usePreviewImageSrc } from "@features/trip/hooks/usePreviewImageHook";
@@ -44,6 +45,7 @@ export default function TripInfo() {
     onPreviewImageSave,
     errors,
     previewImageSrc,
+    onPreviewImageChange,
   } = useTravelInfoForm({ closePreviewImageDialog: close });
 
   return (
@@ -169,9 +171,13 @@ export default function TripInfo() {
       />
       <Pagination />
       <PreviewImageDialog
+        key={previewImageSrc}
         isOpen={isOpen}
         onClose={close}
         onSave={onPreviewImageSave}
+        defaultPreviewImage={formValues.previewImage}
+        defaultPreviewImageSrc={previewImageSrc}
+        onChange={onPreviewImageChange}
       />
     </Stack>
   );
@@ -207,8 +213,14 @@ function useTravelInfoForm({
 
   const onPreviewImageSave = (previewImage: Trip["previewImage"]) => {
     closePreviewImageDialog();
+    dispatch(setPreviewImage(previewImage));
     setValue("previewImage", previewImage);
     trigger("previewImage");
+  };
+
+  const onPreviewImageChange = (previewImage: Trip["previewImage"]) => {
+    dispatch(setPreviewImage(previewImage));
+    setValue("previewImage", previewImage);
   };
 
   const onSubmit: SubmitHandler<FormInput> = (data) => {
@@ -225,5 +237,6 @@ function useTravelInfoForm({
     errors,
     previewImageSrc,
     onPreviewImageSave,
+    onPreviewImageChange,
   };
 }

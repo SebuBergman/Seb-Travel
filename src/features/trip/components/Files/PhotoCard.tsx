@@ -1,18 +1,16 @@
 import { useBreakpoints } from "@app/hooks/useBreakpoints";
 import AppIconButton from "@features/ui/AppIconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import {
-  Box,
-  CircularProgress,
-  Link,
-  Stack,
-} from "@mui/material";
+import { Box, CircularProgress, Link, Stack } from "@mui/material";
 
 interface Props {
   src?: string | null;
   onRemoveClick: () => void;
   uploadProgress: number | undefined;
   isRemoving: boolean;
+  onClick?: () => void;
+  enableBorders?: boolean;
+  borderColor?: string
 }
 
 export default function PhotoCard({
@@ -20,14 +18,20 @@ export default function PhotoCard({
   onRemoveClick,
   uploadProgress,
   isRemoving,
+  onClick,
+  enableBorders,
+  borderColor,
 }: Props) {
   const { md } = useBreakpoints();
 
   return (
     <Box
+      onClick={onClick}
       sx={{
         position: "relative",
         borderRadius: 4,
+        border: enableBorders ? 4 : 0,
+        borderColor: borderColor,
         height: "100%",
         width: "100%",
         overflow: "hidden",
@@ -45,7 +49,10 @@ export default function PhotoCard({
         />
       )}
       <AppIconButton
-        onClick={onRemoveClick}
+        onClick={(event) => {
+          event?.stopPropagation();
+          onRemoveClick();
+        }}
         aria-label="remove photo"
         variant="contained"
         isSmall={!md}
@@ -61,9 +68,9 @@ export default function PhotoCard({
         <CloseIcon fontSize={md ? "medium" : "small"} />
       </AppIconButton>
       <Stack
-        href={isRemoving ? "" : src ?? "#"}
+        href={isRemoving || onClick ? "" : src ?? "#"}
         component={Link}
-        target={isRemoving ? "_self" : "_blank"}
+        target={isRemoving || onClick ? "_self" : "_blank"}
         rel="noopener noreferrer"
         gap={2}
         sx={{
@@ -73,8 +80,17 @@ export default function PhotoCard({
           opacity: uploadProgress ? 0.2 : 1,
         }}
       >
-        <img src={src ?? ""} alt="custom photo" style={{width: "100%", height: "100%" , objectFit: "cover"}} />
-        </Stack>
+        <img
+          src={src ?? ""}
+          alt="custom photo"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            aspectRatio: "1/1",
+          }}
+        />
+      </Stack>
     </Box>
   );
 }
