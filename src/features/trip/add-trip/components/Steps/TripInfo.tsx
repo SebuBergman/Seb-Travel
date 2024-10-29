@@ -81,6 +81,7 @@ export default function TripInfo() {
                   height: "100%",
                   borderRadius: 4,
                   objectFit: "cover",
+                  aspectRatio: "1/1",
                 }}
                 src={previewImageSrc}
                 alt="Trip preview"
