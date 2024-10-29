@@ -83,7 +83,7 @@ export default function AccountLayout() {
   }, [location.pathname]);
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", bgcolor: "grey.100", minHeight: "100vh" }}>
       {/* Desktop Drawer */}
       {md && (
         <>
@@ -96,7 +96,7 @@ export default function AccountLayout() {
             onClick={handleDrawerToggle}
             sx={{
               borderRadius: 1,
-              position: "absolute",
+              position: "fixed",
               top: 27,
               left: `calc(${
                 isOpen ? DESKTOP_DRAWER_WIDTH : DESKTOP_MINIMIZED_DRAWER_WIDTH
