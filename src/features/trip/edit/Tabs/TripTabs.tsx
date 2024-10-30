@@ -11,6 +11,7 @@ import Documents from "./Documents";
 import Photos from "./Photos";
 import { useSearchParams } from "react-router-dom";
 import PackingLists from "./PackingLists";
+import Expenses from "./Expenses";
 
 interface Props {
   trip: Trip;
@@ -106,7 +107,7 @@ export default function TripTabs({ trip, onUpdate }: Props) {
         <PackingLists trip={trip} onUpdate={onUpdate} />
       </CustomTabPanel>
       <CustomTabPanel value={selectedTab} index={3}>
-        Expenses
+        <Expenses trip={trip} onUpdate={onUpdate} />
       </CustomTabPanel>
       <CustomTabPanel value={selectedTab} index={4}>
         <Photos trip={trip} onUpdate={onUpdate} />
