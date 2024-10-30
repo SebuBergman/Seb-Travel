@@ -7,10 +7,13 @@ import ReceiptIcon from "@mui/icons-material/Receipt";
 import { Box, Tab, Tabs } from "@mui/material";
 import type { Trip } from "../../types";
 import TripInfoAndPlaces from "./TripInfoAndPlaces";
+import Documents from "./Documents";
+
 interface Props {
   trip: Trip;
   onUpdate: (data: Partial<Trip>) => void;
 }
+
 function CustomTabPanel({
   children,
   value,
@@ -32,6 +35,7 @@ function CustomTabPanel({
     </div>
   );
 }
+
 export default function TripTabs({ trip, onUpdate }: Props) {
   const [selectedTab, setSelectedTab] = useState(0);
   const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
@@ -85,7 +89,7 @@ export default function TripTabs({ trip, onUpdate }: Props) {
         <TripInfoAndPlaces trip={trip} onUpdate={onUpdate} />
       </CustomTabPanel>
       <CustomTabPanel value={selectedTab} index={1}>
-        Documents
+        <Documents trip={trip} onUpdate={onUpdate} />
       </CustomTabPanel>
       <CustomTabPanel value={selectedTab} index={2}>
         Packing List

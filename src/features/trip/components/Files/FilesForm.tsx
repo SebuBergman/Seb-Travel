@@ -5,6 +5,7 @@ import {
   type UseFieldArrayUpdate,
   useFieldArray,
   useForm,
+  type UseFormWatch,
 } from "react-hook-form";
 
 import { Box, FormHelperText, Stack } from "@mui/material";
@@ -22,13 +23,18 @@ import type { DocumentToUpload, TripFile } from "../../types";
 import DocumentCard from "./DocumentCard";
 import UploadFileButton from "./UploadFileButton";
 import PhotoCard from "./PhotoCard";
+import isEqual from "lodash.isequal";
 
 interface Props {
   defaultFiles: TripFile[];
-  onSubmit: (files: TripFile[]) => void;
-  onChange: (files: TripFile[]) => void;
-  SubmitComponent: React.ReactNode;
+  onSubmit?: (files: TripFile[]) => void;
+  onFileStorageRemoval?: (newFiles: TripFile[]) => void;
+  // onChange is only called for files that are uploaded to the storage
+  onChange?: (updatedFiles: TripFile[]) => void;
+  SubmitComponent?: React.ReactNode;
   type: "document" | "photo";
+  autoUpload?: boolean;
+  tripId: string;
 }
 
 interface FormInput {
@@ -168,7 +174,7 @@ function useFilesUploadForm(props: Props) {
     uploadErrors,
   } = useStorage({
     onAllUploadSuccess: (uploadedFiles) => {
-      props.onSubmit(uploadedFiles);
+      props.onSubmit?.(uploadedFiles);
     },
     onOneUploadSuccess: (index, uploadedFile) => {
       update(index, uploadedFile);
@@ -182,7 +188,7 @@ function useFilesUploadForm(props: Props) {
     }
 
     if (!data?.files || data.files.length === 0) {
-      props.onSubmit([]);
+      props.onSubmit?.([]);
       return;
     }
 
@@ -200,7 +206,8 @@ function useFilesUploadForm(props: Props) {
     }
 
     if (
-      (props.type === "photo" && files.length >= MAX_TRIP_PHOTOS) &&
+      props.type === "photo" &&
+      files.length >= MAX_TRIP_PHOTOS &&
       !(!files[files.length - 1].fileName && files.length === MAX_TRIP_PHOTOS)
     ) {
       return showErrorMessage(
@@ -225,7 +232,10 @@ function useFilesUploadForm(props: Props) {
       const wasFileRemoved = await removeFile(file.storagePath);
       if (wasFileRemoved) {
         remove(index);
-        props.onChange([...files.slice(0, index), ...files.slice(index + 1)]);
+        props.onFileStorageRemoval?.([
+          ...files.slice(0, index),
+          ...files.slice(index + 1),
+        ]);
       }
     } else {
       remove(index);
@@ -244,7 +254,7 @@ function useFilesUploadForm(props: Props) {
 
     if (file.size > 1024 * 1024 * MAX_FILE_SIZE_MB) {
       return showErrorMessage(
-        `File size is too large. Maximum size is: ${MAX_FILE_SIZE_MB}MB`,
+        `File size is too large. Maximum size is: ${MAX_FILE_SIZE_MB}MB`
       );
     }
 
@@ -258,14 +268,21 @@ function useFilesUploadForm(props: Props) {
       );
     }
 
-    onChange({
+    const newFile = {
       fileName: file?.name,
       file,
       url: URL.createObjectURL(file),
-    });
+    };
+    onChange(newFile);
+    if (props.autoUpload) {
+      const filesCopy = [...files];
+      filesCopy[filesCopy.length - 1] = newFile;
+      uploadFiles(`${props.type}s//${props.tripId}`, filesCopy);
+    }
   };
 
   useFilesUrlsUpdate(files, update);
+  useWatchChange(watch, files, props.onChange);
 
   return {
     onSubmit,
@@ -301,4 +318,36 @@ function useFilesUrlsUpdate(
       }),
     [files, update]
   );
+}
+
+function useWatchChange(
+  watch: UseFormWatch<FormInput>,
+  files: TripFile[],
+  onChange?: (data: TripFile[]) => void
+) {
+  const previousFiles = useRef<TripFile[]>(
+    files.map((file) => ({
+      storagePath: file!.storagePath!,
+      fileName: file!.fileName!,
+    }))
+  );
+
+  useEffect(() => {
+    const formUpdateSubscription = watch((newValues) => {
+      const parsedFiles =
+        newValues.files
+          ?.filter((file) => Boolean(file?.storagePath))
+          .map((file) => ({
+            storagePath: file!.storagePath!,
+            fileName: file!.fileName!,
+          })) ?? [];
+
+      if (!isEqual(parsedFiles, previousFiles.current)) {
+        previousFiles.current = parsedFiles;
+        onChange?.(parsedFiles);
+      }
+    });
+
+    return () => formUpdateSubscription.unsubscribe();
+  }, [watch, onChange]);
 }
