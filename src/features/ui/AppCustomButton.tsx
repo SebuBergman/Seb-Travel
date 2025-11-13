@@ -15,7 +15,7 @@ interface Props {
   sx?: SxProps<Theme>;
 }
 
-export default function AppButton({
+ function AppButton({
   type = "button",
   variant = "contained",
   fullWidth,
