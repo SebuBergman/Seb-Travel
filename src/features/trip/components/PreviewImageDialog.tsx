@@ -20,6 +20,7 @@ interface Props {
   onSave: (previewImage: Trip["previewImage"]) => void;
   // Will be called in case of uploaded file removal
   onChange?: (previewImage: Trip["previewImage"]) => void;
+  tripId: string
 }
 export default function PreviewImageDialog({
   isOpen,
@@ -28,6 +29,7 @@ export default function PreviewImageDialog({
   defaultPreviewImage,
   defaultPreviewImageSrc,
   onChange,
+  tripId,
 }: Props) {
   const { md } = useBreakpoints();
   const { showErrorMessage } = useToast();
@@ -77,7 +79,7 @@ export default function PreviewImageDialog({
       !selectedPreviewImage.storagePath &&
       customImageFile
     ) {
-      uploadFiles("preview-images", [
+      uploadFiles(`preview-images/${tripId}`, [
         { fileName: customImageFile.name, file: customImageFile },
       ]);
     } else if (

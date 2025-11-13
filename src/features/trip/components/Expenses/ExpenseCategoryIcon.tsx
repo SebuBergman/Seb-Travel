@@ -6,7 +6,7 @@ interface Props {
   children: React.ReactNode;
   color: string;
   backgroundColor: string;
-  borderColor: string;
+  borderColor?: string;
   isSmall?: boolean;
 }
 export default function ExpenseCategoryIcon({
